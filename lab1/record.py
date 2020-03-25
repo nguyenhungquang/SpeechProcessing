@@ -52,6 +52,7 @@ def callback(indata, frames, time, status):
     if status:
         print(status, file=sys.stderr)
     q.put(indata.copy())
+"""
 def on_press(key):
     if key == keyboard.Key.space:
         print(1)
@@ -63,18 +64,19 @@ def on_release(key):
     if key == keyboard.Key.esc:
         # Stop listener
         return False
-def start_recording():
+"""
+def start_recording(index):
     try:
         if args.samplerate is None:
             device_info = sd.query_devices(args.device, 'input')
             # soundfile expects an int, sounddevice provides a float:
             args.samplerate = int(device_info['default_samplerate'])
         if args.filename is None:
-            args.filename = tempfile.mktemp(prefix='sentence',
+            args.filename = tempfile.mktemp(prefix=str(index)+'sentence',
                                             suffix='.wav', dir='')
-    
+        new_file= tempfile.mktemp(prefix=str(index)+'sentence',suffix='.wav', dir='')
         # Make sure the file is opened before recording anything:
-        with sf.SoundFile(args.filename, mode='x', samplerate=args.samplerate,
+        with sf.SoundFile(new_file, mode='x', samplerate=args.samplerate,
                           channels=args.channels, subtype=args.subtype) as file:
             with sd.InputStream(samplerate=args.samplerate, device=args.device,
                                 channels=args.channels, callback=callback):
@@ -83,19 +85,25 @@ def start_recording():
                 print('#' * 80)
                 while True:
                     file.write(q.get())
-                    if stop:
-                        print('stop')
-                        break
-                        parser.exit(0)
     except KeyboardInterrupt:
-        print('\nRecording finished: ' + repr(args.filename))
-        parser.exit(0)
+        print('\nRecording finished: ' + repr(new_file))
+        #break
+        #parser.exit(0)
     except Exception as e:
         parser.exit(type(e).__name__ + ': ' + str(e))
+def record_multi_files():
+    index=0
+    while True:
+        is_rec=input("Start recording? y/n? ")
+        if is_rec=='y':
+            start_recording(index)
+        if is_rec=='n':
+            return
+        index+=1
 if __name__=='__main__':
     
     #with keyboard.Listener(
     #        on_press=on_press,
     #        on_release=on_release) as listener:
     #    listener.join()
-    start_recording()
+    record_multi_files()
