@@ -30,6 +30,7 @@ import argparse
 parser=argparse.ArgumentParser()
 parser.add_argument("-f","--file",help="input file name")
 parser.add_argument("-fd","--folder",help="input folder name")
+parser.add_argument("-m","--model",help="model file")
 args=parser.parse_args()
 fs =44100
 fftlen = pyworld.get_cheaptrick_fft_size(fs)
@@ -51,8 +52,9 @@ else:
     windows = [
         (0, 0, np.array([1.0])),
     ]
-with open("class.pkl", "rb") as file: 
-    gmm=pickle.load(file)
+if args.model:
+    with open(args.model, "rb") as file: 
+        gmm=pickle.load(file)
 #legend(prop={"size": 16})
 def test_one_utt(src_path, disable_mlpg=False, diffvc=True):
     # GMM-based parameter generation is provided by the library in `baseline` module
