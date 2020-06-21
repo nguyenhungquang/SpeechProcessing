@@ -60,20 +60,9 @@ def callback(indata, frames, time, status):
     if status:
         print(status, file=sys.stderr)
     q.put(indata.copy())
-"""
-def on_press(key):
-    if key == keyboard.Key.space:
-        print(1)
-        start=True
-def on_release(key):
-    if key == keyboard.Key.tab:
-        print(2)
-        stop=True
-    if key == keyboard.Key.esc:
-        # Stop listener
-        return False
-"""
-def start_recording(index):
+def start_recording(index,d=None):
+    if d is None:
+        d=args.dir
     try:
         if args.samplerate is None:
             device_info = sd.query_devices(args.device, 'input')
@@ -82,7 +71,7 @@ def start_recording(index):
         if args.filename is None:
             args.filename = tempfile.mktemp(prefix=str(index)+'sentence',
                                             suffix='.wav', dir='')
-        new_file= tempfile.mktemp(prefix=str(index)+'sentence',suffix='.wav', dir=args.dir)
+        new_file= tempfile.mktemp(prefix=str(index)+'sentence',suffix='.wav', dir=d)
         # Make sure the file is opened before recording anything:
         with sf.SoundFile(new_file, mode='x', samplerate=args.samplerate,
                           channels=args.channels, subtype=args.subtype) as file:
@@ -95,7 +84,6 @@ def start_recording(index):
                     file.write(q.get())
     except KeyboardInterrupt:
         print('\nRecording finished: ' + repr(new_file))
-        #break
         return new_file
         #parser.exit(0)
     except Exception as e:
@@ -117,6 +105,13 @@ def record_multi_files(array):
         index+=1
 if __name__=='__main__':
     txt_file="text.txt"
+    with open(txt_file,encoding="utf-8") as f:
+        file_content=f.read()
+    #sentence_array=re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s',file_content)
+    sentence_array=nltk.tokenize.sent_tokenize(file_content)
+    with open(txt_file,'w',encoding="utf-8") as f:
+        for t in sentence_array:
+            f.write(t+"\n")
     subprocess.Popen("notepad.exe "+txt_file)
     if args.dir is None:
         args.dir="1"
@@ -125,10 +120,6 @@ if __name__=='__main__':
     except OSError:
         print("Directory already exist")
         sys.exit()
-    with open(txt_file,encoding="utf-8") as f:
-        file_content=f.read()
-    #sentence_array=re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s',file_content)
-    sentence_array=nltk.tokenize.sent_tokenize(file_content)
     #print(sentence_array)
     #with keyboard.Listener(
     #        on_press=on_press,

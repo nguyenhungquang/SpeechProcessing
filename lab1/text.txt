@@ -1,32 +1,13 @@
-<<<<<<< HEAD
-﻿Italy ghi nhận 6.820 ca tử vong trong số 69.176 người nhiễm, trong khi Trung Quốc đại lục báo cáo 3.277 người chết. 
-
-Số người chết vì nCoV ở Italy trong vòng 24 giờ qua tăng thêm 743, cao thứ hai kể từ khi Covid-19 xuất hiện ở nước này và nhiều hơn đáng kể so với con số 602 ca tử vong mới hôm 23/3. Với những trường hợp mới ghi nhận, số người chết vì nCoV ở Italy đã cao hơn gấp đôi Trung Quốc.
-
-Do việc xét nghiệm ở Italy chỉ giới hạn cho những người có triệu chứng nghiêm trọng, Angelo Borrelli, giám đốc Cơ quan Bảo vệ Dân sự Italy, hôm qua cho biết số bệnh nhân Covid-19 trên thực tế có thể cao gấp 10 lần con số báo cáo. 
-
-Số liệu mới nhất khiến niềm hy vọng rằng tình hình dịch ở Italy đang chuyển biến tích cực bị lung lay, sau khi nước này ghi nhận những con số khả quan hơn trong hai ngày trước. Lệnh phong tỏa đã kéo dài hai tuần, các trường học và hàng quán đóng cửa, người dân chỉ được phép ra khỏi nhà khi có nhu cầu thiết yếu.
-
-Chính phủ Italy hôm 23/3 ban lệnh đóng cửa tất cả doanh nghiệp được cho là không thiết yếu. Thủ tướng Giuseppe Conte cũng tăng mức phạt những người rời khỏi nhà từ 206 EUR (hơn 220 USD) lên 3.000 EUR (hơn 3.200 USD).
-
-"Mỗi người trong chúng ta phải thực hiện trách nhiệm của mình. Việc mọi người tuân thủ các quy định không chỉ giúp bảo vệ chính mình và người thân, mà còn tạo điều kiện cho cả đất nước thoát khỏi tình trạng khẩn cấp này", Conte phát biểu trong cuộc họp báo thông qua video. 
-
-Những lệnh hạn chế hiện nay tại Italy dự kiến hết hiệu lực vào ngày 3/4. Theo một nghị định ban hành hôm qua, chính phủ có thể kéo dài thời hạn đến ngày 31/7. Tuy nhiên, Thủ tướng Conte bác bỏ kế hoạch duy trì lệnh phong tỏa đến lúc đó. 
-
-=======
-﻿Italy ghi nhận 6.820 ca tử vong trong số 69.176 người nhiễm, trong khi Trung Quốc đại lục báo cáo 3.277 người chết. 
-
-Số người chết vì nCoV ở Italy trong vòng 24 giờ qua tăng thêm 743, cao thứ hai kể từ khi Covid-19 xuất hiện ở nước này và nhiều hơn đáng kể so với con số 602 ca tử vong mới hôm 23/3. Với những trường hợp mới ghi nhận, số người chết vì nCoV ở Italy đã cao hơn gấp đôi Trung Quốc.
-
-Do việc xét nghiệm ở Italy chỉ giới hạn cho những người có triệu chứng nghiêm trọng, Angelo Borrelli, giám đốc Cơ quan Bảo vệ Dân sự Italy, hôm qua cho biết số bệnh nhân Covid-19 trên thực tế có thể cao gấp 10 lần con số báo cáo. 
-
-Số liệu mới nhất khiến niềm hy vọng rằng tình hình dịch ở Italy đang chuyển biến tích cực bị lung lay, sau khi nước này ghi nhận những con số khả quan hơn trong hai ngày trước. Lệnh phong tỏa đã kéo dài hai tuần, các trường học và hàng quán đóng cửa, người dân chỉ được phép ra khỏi nhà khi có nhu cầu thiết yếu.
-
-Chính phủ Italy hôm 23/3 ban lệnh đóng cửa tất cả doanh nghiệp được cho là không thiết yếu. Thủ tướng Giuseppe Conte cũng tăng mức phạt những người rời khỏi nhà từ 206 EUR (hơn 220 USD) lên 3.000 EUR (hơn 3.200 USD).
-
-"Mỗi người trong chúng ta phải thực hiện trách nhiệm của mình. Việc mọi người tuân thủ các quy định không chỉ giúp bảo vệ chính mình và người thân, mà còn tạo điều kiện cho cả đất nước thoát khỏi tình trạng khẩn cấp này", Conte phát biểu trong cuộc họp báo thông qua video. 
-
-Những lệnh hạn chế hiện nay tại Italy dự kiến hết hiệu lực vào ngày 3/4. Theo một nghị định ban hành hôm qua, chính phủ có thể kéo dài thời hạn đến ngày 31/7. Tuy nhiên, Thủ tướng Conte bác bỏ kế hoạch duy trì lệnh phong tỏa đến lúc đó. 
-
->>>>>>> 5270ff83c873558685c8838a86074cab27cbf89e
-Sau khi khởi phát từ Trung Quốc hồi tháng 12/2019, Covid-19 đã xuất hiện tại 197 quốc gia và vùng lãnh thổ với tâm dịch là châu Âu. Toàn cầu ghi nhận hơn 418.000 ca nhiễm nCoV, hơn 18.600 người chết và hơn 108.000 trường hợp bình phục. 
+﻿Ngay sau khi Chỉ thị 16/CT-TTg ngày 31/3/2020 của Thủ tướng được ban hành, Bộ Giao thông Vận tải (GTVT) đã phát đi chỉ đạo khẩn triển khai nội dung của Chỉ thị đến các đơn vị trực thuộc.
+Theo đó, Cục Hàng không Việt Nam, trong vòng 15 ngày kể từ 1/4/2020, chịu trách nhiệm điều phối các hãng hàng không Việt Nam khai thác, vận chuyển hành khách với tần suất như sau: Đường bay Hà Nội-TPHCM khai thác 2 chuyến khứ hồi/ngày; đường bay Hà Nội-Đà Nẵng khai thác 1 chuyến khứ hồi/ngày; đường bay TPHCM-Đà Nẵng khai thác 1 chuyến khứ hồi/ngày.
+Dừng toàn bộ các chuyến bay trên các đường bay nội địa còn lại.
+Tuy nhiên, Bộ GTVT không hạn chế khai thác đối với các chuyến bay không vận chuyển hành khách.
+Tổng cục Đường bộ Việt Nam có nhiệm vụ chỉ đạo các Sở GTVT tham mưu cho UBND các tỉnh, thành phố trực thuộc Trung ương: Trong vòng 15 ngày (kể từ 0h ngày 1/4/2020) dừng hoạt động vận chuyển các tuyến vận tải hành khách cố định liên tỉnh, nội tỉnh; các hoạt động vận tải của xe hợp đồng, xe du lịch, xe taxi, xe buýt tại các tỉnh, thành phố trong cả nước.
+Trừ trường hợp đặc biệt vì lý do công vụ và các trường hợp cung cấp lương thực, thực phẩm, nhu yếu phẩm cần thiết, xe đưa đón công nhân, chuyên gia của các doanh nghiệp, chuyên chở nguyên vật liệu sản xuất, hàng hoá.
+Chỉ đạo các bến xe địa phương thực hiện nghiêm việc dừng hoạt động của các tuyến vận tải hành khách cố định, liên tỉnh, nội tỉnh.
+Trong trường hợp đặc biệt, Sở GTVT tham mưu cho UBND tỉnh, thành phố trực thuộc Trung ương xem xét, quyết định.
+Cục Đường sắt Việt Nam chỉ đạo Tổng Công ty đường sắt Việt Nam và các doanh nghiệp vận tải đường sắt trong vòng 15 ngày kể từ 0h ngày 1/4/2020 tạm dừng toàn bộ hoạt động của tàu khách địa phương.
+Đối với tuyến đường sắt Hà Nội-TPHCM chỉ khai thác tối đa 01 đôi tàu khách/ngày (1 chuyến khứ hồi).
+Không hạn chế khai thác với tàu chở hàng.
+Cục Hàng hải Việt Nam, Cục Đường thuỷ nội địa Việt Nam có nhiệm vụ phối hợp với địa phương dừng các chuyến tàu chở khách tuyến từ bờ ra đảo trong vòng 15 ngày (từ 1/4/2020).
+Không hạn chế khai thác với các chuyến tàu không chở khách
