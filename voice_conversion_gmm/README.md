@@ -13,4 +13,4 @@ python cmd_vc.py -m class.pkl -fd input
 ```
 A folder name **tgt_input** containing converted wav files will appear.
 #### GUI version
-Put directory to media player on your PC to player.txt, for example it is C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC64\mpc-hc64.exe on my PC. Compile vc.py.
+Put directory to media player on your PC on **player.txt**, for example it is C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC64\mpc-hc64.exe on my PC. Compile vc.py.
