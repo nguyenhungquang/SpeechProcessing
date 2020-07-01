@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import tkinter as tk
+from tkinter import *
+import tkinter.messagebox
+import pyaudio
+import wave
+import os
+import numpy as np
+import math
+import operator
+import scipy.io.wavfile
+import subprocess
+# In[2]:
+
 
 from nnmnkwii.datasets import PaddedFileSourceDataset
 from nnmnkwii.datasets.cmu_arctic import CMUArcticWavFileDataSource
@@ -25,22 +44,102 @@ import IPython
 from IPython.display import Audio
 import matplotlib.pyplot as plt
 import pickle
-import argparse
 
-parser=argparse.ArgumentParser()
-parser.add_argument("-f","--file",help="input file name")
-parser.add_argument("-fd","--folder",help="input folder name")
-parser.add_argument("-m","--model",help="model file")
-args=parser.parse_args()
-fs =44100
-fftlen = pyworld.get_cheaptrick_fft_size(fs)
-alpha = pysptk.util.mcepalpha(fs)
+
+# In[ ]:
+
+
+CHUNK = 1024
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
+RATE = 44100
+FILE_NAME = 'input/voice.wav'
+
+
+# In[ ]:
+
+
+p = pyaudio.PyAudio()
+recording = 0
+frames = []
+
+
+# In[ ]:
+
+
+stream = p.open(format=FORMAT,
+                channels=CHANNELS,
+                rate=RATE,
+                input=True,
+                frames_per_buffer=CHUNK)
+
+
+# In[ ]:
+
+
+def start_record():
+    recording = 1
+    frames.clear()
+    label['text'] = 'Đang ghi âm'
+    stream = p.open(format=FORMAT,
+                channels=CHANNELS,
+                rate=RATE,
+                input=True,
+                frames_per_buffer=CHUNK)
+    while recording == 1:
+        data = stream.read(CHUNK)
+        frames.append(data)
+        window.update()
+
+
+# In[ ]:
+
+
+def stop_record(): 
+    recording = 0
+    label['text'] = 'Ghi âm xong'
+    print('* stop recording')
+    stream.stop_stream()
+    stream.close()
+    wf = wave.open(FILE_NAME, 'wb')
+    wf.setnchannels(CHANNELS)
+    wf.setsampwidth(p.get_sample_size(FORMAT))
+    wf.setframerate(RATE)
+    wf.writeframes(b''.join(frames))
+    wf.close()
+
+
+# In[ ]:
+
+
+import sounddevice as sd
+
+
+# In[ ]:
+def play_output():
+    subprocess.call(["C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC64\mpc-hc64.exe",os.getcwd()+"\output\\voice.wav"])
+
+def play_wav(c):
+    print(c)
+    fs, x =  wavfile.read(c)
+    print(x)
+    sd.play(x, fs)
+
+# In[ ]:
+
+
+fftlen = pyworld.get_cheaptrick_fft_size(RATE)
+alpha = pysptk.util.mcepalpha(RATE)
 order = 24
 frame_period = 5
-hop_length = int(fs * (frame_period * 0.001))
+hop_length = int(RATE * (frame_period * 0.001))
 max_files = 100 # number of utterances to be used.
 test_size = 0.03
 use_delta = True
+
+
+# In[ ]:
+
 
 if use_delta:
     windows = [
@@ -52,10 +151,27 @@ else:
     windows = [
         (0, 0, np.array([1.0])),
     ]
-if args.model:
-    with open(args.model, "rb") as file: 
+
+
+# In[ ]:
+
+
+with open("models/quang.pkl", "rb") as file: 
+    gmm=pickle.load(file)
+
+
+# In[ ]:
+
+
+def import_model(c):
+    title_model['text'] = c
+    with open("models/" + c + ".pkl", "rb") as file: 
         gmm=pickle.load(file)
-#legend(prop={"size": 16})
+
+
+# In[ ]:
+
+
 def test_one_utt(src_path, disable_mlpg=False, diffvc=True):
     # GMM-based parameter generation is provided by the library in `baseline` module
     if disable_mlpg:
@@ -93,24 +209,62 @@ def test_one_utt(src_path, disable_mlpg=False, diffvc=True):
             mc.astype(np.float64), alpha=alpha, fftlen=fftlen)
         waveform = pyworld.synthesize(
             f0, spectrogram, aperiodicity, fs, frame_period)
-        
     return waveform
-src_path="src/5.wav"
-tgt_path="tgt/5.wav"
-if args.file:
-    src_path="src/"+args.file
-    tgt_path="tgt/"+args.file
+
+
+# In[ ]:
+
+
+def vc():
+    src_path="input/voice.wav"
+    tgt_path="output/voice.wav"
     w_MLPG = test_one_utt(src_path, disable_mlpg=False)
-    wavfile.write(tgt_path,fs,w_MLPG)
-if args.folder:
-    folder=args.folder
-    tgt_folder="tgt_"+folder
-    if not os.path.exists(tgt_folder):
-        os.makedirs(tgt_folder)
-    for n,f in enumerate(os.listdir(folder)):
-        file_path=folder+"/"+f
-        out_path=tgt_folder+'/'+f
-        print(out_path)
-        wave=test_one_utt(file_path,disable_mlpg=False)
-        wavfile.write(out_path,fs,wave)
+    librosa.output.write_wav(tgt_path, w_MLPG, RATE)
+    #scipy.io.wavfile.write(tgt_path, RATE, w_MLPG)
+    #wavfile.write(tgt_path, RATE, w_MLPG)
+
+
+# In[ ]:
+
+
+window = tk.Tk()
+window.geometry('500x300')
+window.title('Voice conversion')
+model_names = [
+    'dong',
+    'quang',
+    'duc',
+    'an',
+    'tuyen',
+    'thang'
+]
+button_model = tk.Frame(window, padx=150, pady=100)
+button_model.pack(fill=BOTH)
+title_model = Menubutton(button_model, width=20, padx=10,
+                                pady=5, relief=RAISED)
+title_model.grid(row=0, column=0, padx=20, pady=5)
+title_model['text'] = 'Chọn giọng chuyển'
+title_model.menu = Menu(title_model)
+title_model["menu"] = title_model.menu
+for c in model_names:
+    title_model.menu.add_command(label=c, command=lambda c=c: import_model(c))
+button_start = tk.Button(window, text='Ghi âm', width=15, command=start_record)
+button_start.place(x=70, y=50)
+button_stop = tk.Button(window, text='Dừng ghi âm', width=15, command=stop_record)
+button_stop.place(x=190, y=50)
+button_play = tk.Button(window, text='Phát lại', width=15, command=lambda c='input/voice.wav': play_wav(c))
+button_play.place(x=310, y=50)
+button_vc = tk.Button(window, text='Chuyển giọng', width=15, command=vc)
+button_vc.place(x=130, y=150)
+button_play_2 = tk.Button(window, text='Kiểm tra', width=15, command=lambda c='output/voice.wav': play_output())
+button_play_2.place(x=250, y=150)
+label = tk.Label(window)
+label.place(x=220, y=200)
+tk.mainloop()
+
+
+# In[ ]:
+
+
+
 
