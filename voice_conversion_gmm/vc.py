@@ -57,7 +57,8 @@ FILE_NAME = 'input/voice.wav'
 
 
 # In[ ]:
-
+f = open("player.txt", "r")
+player=f.read()
 
 p = pyaudio.PyAudio()
 recording = 0
@@ -117,7 +118,7 @@ import sounddevice as sd
 
 # In[ ]:
 def play_output():
-    subprocess.call(["C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC64\mpc-hc64.exe",os.getcwd()+"\output\\voice.wav"])
+    subprocess.call([player,os.getcwd()+"\output\\voice.wav"])
 
 def play_wav(c):
     print(c)
@@ -231,12 +232,7 @@ window = tk.Tk()
 window.geometry('500x300')
 window.title('Voice conversion')
 model_names = [
-    'dong',
-    'quang',
-    'duc',
-    'an',
-    'tuyen',
-    'thang'
+    'Quang'
 ]
 button_model = tk.Frame(window, padx=150, pady=100)
 button_model.pack(fill=BOTH)
